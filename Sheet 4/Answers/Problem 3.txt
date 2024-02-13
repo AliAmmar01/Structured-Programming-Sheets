@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void Fibonacci(int fib)
+{
+	int num1 = 0, num2 = 1, num3 = 0;;
+	for (int i = 0; i < fib; i++)
+	{
+		num3 = num1 + num2;
+		cout << num3 << " ";
+		num1 = num2;
+		num2 = num3;
+	}
+}
+
+void main()
+{
+	int fib;
+	cout << "How many numbers of the Fibonacci sequence would you like to display: ";
+	cin >> fib;
+	Fibonacci(fib);
+}

@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void reverse(int numbers[],int size)
+{
+	int rev_numbers[sizeof(numbers)] = {};
+	int j = size-1;
+	cout << "The New Array: ";
+	for (int i = 0; i < size; i++)
+	{
+		rev_numbers[i] = numbers[j];
+		cout << rev_numbers[i] << " ";
+		j--;
+	}
+	cout << endl;
+}
+
+void main()
+{
+	int size;
+	cout << "How many numbers you will enter: ";
+	cin >> size;
+	int* numbers = new int[size];
+	cout << "Please enter " << size << " integers: ";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> numbers[i];
+	}
+	reverse(numbers,size);
+}

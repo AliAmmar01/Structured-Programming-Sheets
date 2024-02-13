@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+void change(char numArray[])
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (numArray[i] != '0')
+		{
+			if (numArray[i] % 2 == 0)
+			{
+				numArray[i] = '*';
+			}
+			else if (numArray[i] % 2 != 0)
+			{
+				numArray[i] = '%';
+			}
+		}
+	}
+}
+
+void display(char numArray[])
+{
+	cout << "Array elements after change: ";
+	for (int i = 0; i < size; i++)
+	{
+		cout << numArray[i] << " ";
+	}
+	cout << endl;
+}
+
+void main()
+{
+	char numArray[size] = {};
+	cout << "Enter array elements: ";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> numArray[i];
+	}
+	change(numArray);
+	display(numArray)
+}

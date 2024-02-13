@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+void reversed(int num)
+{
+	int mod_num = num, revArray[10] = {}, i = 0;
+	while (mod_num > 0)
+	{
+		revArray[i] = mod_num % 10;
+		mod_num /= 10;
+		i++;
+	}
+	for (int j = 0; j < i; j++)
+	{
+		cout << revArray[j];
+	}
+	cout << endl;
+}
+
+void main()
+{
+	int num;
+	cout << "Enter an integer to reverse: ";
+	cin >> num;
+	reversed(num);
+}

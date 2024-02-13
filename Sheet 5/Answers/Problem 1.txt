@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+void input(int numArray[], int size)
+{
+	cout << "Enter " << size << " numbers:\n";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> numArray[i];
+	}
+}
+
+void positive(int numArray[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (numArray[i] < 0)
+		{
+			numArray[i] *= -1;
+		}
+	}
+}
+
+void display(int numArray[], int size)
+{
+	cout << "Numbers after changes: ";
+	for (int i = 0; i < size; i++)
+	{
+		cout << numArray[i] << " ";
+	}
+	cout << endl;
+}
+void main()
+{
+	int size;
+	cout << "How many numbers do you want to store? ";
+	cin >> size;
+	int* numArray = new int[size];
+	input(numArray, size);
+	positive(numArray,size);
+	display(numArray,size);
+}

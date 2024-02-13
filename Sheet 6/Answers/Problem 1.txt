@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+#define size 3
+
+struct Halls
+{
+	int hall_num;
+	int seats = 50;
+	string movie;
+}hall[size];
+
+bool reservation(int seats2reserve, string film)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (hall[i].movie == film && hall[i].seats >= seats2reserve)
+		{
+			hall[i].seats -= seats2reserve;
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
+void main()
+{
+	string film;
+	int seats2reserve;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter Hall number: ";
+		cin >> hall[i].hall_num;
+		cout << "Enter movie: ";
+		cin >> hall[i].movie;
+	}
+	cout << "Enter your designated movie: ";
+	cin >> film;
+	cout << "How many tickets? ";
+	cin >> seats2reserve;
+	if (reservation(seats2reserve, film))
+	{
+		cout << "Reservation successful\n";
+		for (int i = 0; i < size; i++)
+		{
+			if (hall[i].movie == film)
+			{
+				cout << "Movie at Hall number: " << hall[i].hall_num << endl;
+				cout << "Number of empty seats: " << hall[i].seats << endl;
+			}
+		}
+	}
+	else
+	{
+		cout << "Reservation unsuccessful\n";
+
+	}
+	cout << endl;
+}

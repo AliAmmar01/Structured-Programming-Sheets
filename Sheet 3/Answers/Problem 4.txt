@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isArmstrong(int num)
+{
+	int digit, rem = 0, sum = 0, mod_Num = num;
+	while (mod_Num > 0)
+	{
+		rem = mod_Num % 10;
+		sum += pow(rem, 3);
+		mod_Num /= 10;
+	}
+	if (sum == num)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void main()
+{
+	int num;
+	cout << "Enter a positive integer: ";
+	cin >> num;
+	if (isArmstrong(num))
+	{
+		cout << num << " is an Armstrong number.";
+	}
+	else
+	{
+		cout << num << " isn't an Armstrong number.";
+	}
+	cout << endl;
+}

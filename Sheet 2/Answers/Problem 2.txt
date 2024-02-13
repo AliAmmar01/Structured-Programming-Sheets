@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+#define size 5
+
+bool verify(int numArray1[], int numArray2[])
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (numArray1[i] == numArray2[i])
+		{
+			return true;
+			continue;
+		}
+		else
+		{
+			return false;
+			break;
+		}
+	}
+}
+
+void main()
+{
+	int numArray1[size] = {}, numArray2[size] = {};
+	char ans;
+	do
+	{
+		cout << "Enter elements of the first array: ";
+		for (int i = 0; i < size; i++)
+		{
+			cin >> numArray1[i];
+		}
+		cout << "Enter elements of the second array: ";
+		for (int i = 0; i < size; i++)
+		{
+			cin >> numArray2[i];
+		}
+		if (verify(numArray1, numArray2))
+		{	
+			cout << "Match!";
+		}
+		else
+		{
+			cout << "No Match!";
+		}
+		cout << "\nDo you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

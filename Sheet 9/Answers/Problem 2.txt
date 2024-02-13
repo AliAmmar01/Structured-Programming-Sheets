@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+struct trips
+{
+	int hours = 0, minutes = 0, seconds = 0;
+};
+
+void input(trips* trip_duration, int size)
+{
+	cout << "Enter " << size << " durations (Hours Minutes Seconds):\n";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> trip_duration[i].hours >> trip_duration[i].minutes >> trip_duration[i].seconds;
+	}
+}
+
+void display(trips total_duration, int size)
+{
+	cout << "The total duration for " << size << " trips is:\nHH\tMM\tSS\n" << total_duration.hours << "\t" << total_duration.minutes << "\t" << total_duration.seconds << "\n";
+
+}
+
+void calcTotal(trips* trip_duration, int size)
+{
+	trips total_Duration;
+	for (int i = 0; i < size; i++)
+	{
+		total_Duration.hours += trip_duration[i].hours;
+		total_Duration.minutes += trip_duration[i].minutes;
+		if (total_Duration.minutes >= 60)
+		{
+			total_Duration.hours++;
+			total_Duration.minutes -= 60;
+		}
+		total_Duration.seconds += trip_duration[i].seconds;
+		if (total_Duration.seconds >= 60)
+		{
+			total_Duration.minutes++;
+			total_Duration.seconds -= 60;
+		}
+	}
+	display(total_Duration, size);
+}
+
+void main()
+{
+	int size;
+	cout << "Enter the number of trips: ";
+	cin >> size;
+	trips* trip_duration = new trips[size];
+	input(trip_duration, size);
+	calcTotal(trip_duration, size);
+	delete[] trip_duration;
+	trip_duration = NULL;
+}

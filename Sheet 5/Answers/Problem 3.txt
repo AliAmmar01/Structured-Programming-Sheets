@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+void deposit(double& balance)
+{
+	int amount;
+	cout << "How much are you going to deposit? ";
+	cin >> amount;
+	balance += amount;
+}
+
+void withdraw(double& balance)
+{
+	int amount;
+	while (true)
+	{
+		cout << "How much are you going to withdraw? ";
+		cin >> amount;
+		if (amount <= balance)
+		{
+			balance -= amount;
+			break;
+		}
+		else
+		{
+			cout << "Error!\nInsufficient balance\n";
+			continue;
+		}
+	}
+}
+
+void display(double& balance)
+{
+	cout << "Current balance: " << balance;
+}
+
+void main()
+{
+	double balance = 1000;
+	char ans;
+	do
+	{
+		int op;
+		cout << "Choose your operation:\n1-Deposit\t2-Withdraw\t3-Display Balance\n";
+		cin >> op;
+		switch (op)
+		{
+		case 1:
+			deposit(balance);
+			break;
+		case 2:
+			withdraw(balance);
+			break;
+		case 3:
+			display(balance);
+			break;
+		}
+		cout << "\nDo you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans=='Y');
+}

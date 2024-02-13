@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+void input(int* num_Array, int size, int* bin_Array)
+{
+	cout << "Enter " << size << " elements:\n";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> num_Array[i];
+		bin_Array[i] = 0;
+	}
+}
+
+void convert(int* num_Array, int size, int* bin_Array)
+{
+	int rem, power;
+	for (int i = 0; i < size; i++)
+	{
+		int num = num_Array[i];
+		power = 0;
+		while (num >= 1)
+		{
+			rem = num % 2;
+			bin_Array[i] += rem * pow(10, power);
+			num /= 2;
+			power++;
+		}
+	}
+}
+
+void display(int* num_Array, int size, int* bin_Array)
+{
+	cout << "The binary representation of your elements:\n";
+	for (int i = 0; i < size; i++)
+	{
+		cout << num_Array[i] << " --> " << bin_Array[i] << endl;
+	}
+}
+
+void main()
+{
+	int size;
+	cout << "Enter the number of elements: ";
+	cin >> size;
+	int* num_Array = new int[size];
+	int* bin_Array = new int[size];
+	input(num_Array, size, bin_Array);
+	convert(num_Array, size, bin_Array);
+	display(num_Array, size, bin_Array);
+	delete[] num_Array;
+	delete[] bin_Array;
+	num_Array = NULL;
+	bin_Array = NULL;
+}

@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void swap(int* x, int* y)
+{
+	int temp;
+	temp = *x;
+	*x = *y;
+	*y = temp;
+}
+
+void main()
+{
+	int x, y;
+	cout << "Enter two numbers:\n";
+	cin >> x >> y;
+	swap(&x, &y);
+	cout << "The numbers swapped are: " << x << " " << y;
+}

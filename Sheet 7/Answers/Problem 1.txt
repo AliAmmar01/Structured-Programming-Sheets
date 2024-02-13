@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+void input(int num_Array[][10], int row, int col)
+{
+	cout << "Enter the numbers:\n";
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			cin >> num_Array[r][c];
+		}
+	}
+}
+
+bool identity(int num_Array[][10], int row, int col)
+{
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			if (r == c)
+			{
+				if (num_Array[r][c] != 1)
+				{
+					return false;
+					break;
+				}
+			}
+			else
+			{
+				if (num_Array[r][c] != 0)
+				{
+					return false;
+					break;
+				}
+			}
+		}
+	}
+	return true;
+}
+
+void main()
+{
+	int num_Array[size][size], row, col;
+	char ans = 'y';
+	do
+	{		
+		cout << "Enter the dimensions of the matrix: ";
+		cin >> row >> col;
+		if (row != col)
+		{
+			cout << "Wrong dimensions!\n";
+			continue;
+		}
+		else
+		{
+			input(num_Array, row, col);
+			if (identity(num_Array, row, col))
+			{
+				cout << "It's an identity matrix.\n";
+			}
+			else
+			{
+				cout << "It’s not an identity matrix.\n";
+			}
+		}
+		cout << "Do you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

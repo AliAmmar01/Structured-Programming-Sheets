@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void score(int& t1s, int& t2s, int s1, int s2)
+{
+	if (s1 > s2)
+	{
+		t1s += 3;
+	}
+	else if (s1 < s2)
+	{
+		t2s += 3;
+	}
+	else
+	{
+		t1s++;
+		t2s++;
+	}
+}
+
+void displaywinner(int t1s, int t2s)
+{
+	if (t1s > t2s)
+	{
+		cout << "Team 1 wins.";
+	}
+	else if (t1s < t2s)
+	{
+		cout << "Team 2 wins.";
+	}
+	else
+	{
+		cout << "It's a tie.";
+	}
+	cout << endl;
+}
+
+void main()
+{
+	int t1s = 0, t2s = 0, s1, s2;
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "Enter result of match " << i + 1 << ": ";
+		cin >> s1 >> s2;
+		score(t1s, t2s, s1, s2);
+	}
+	displaywinner(t1s, t2s);
+}

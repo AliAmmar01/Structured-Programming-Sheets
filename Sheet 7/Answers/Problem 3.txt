@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+void input(int num_array1[][size], int  num_array2[][size], int row, int col)
+{
+	cout << "Enter the first matrix:\n";
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			cin >> num_array1[r][c];
+		}
+	}
+	cout << "Enter the second matrix:\n";
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			cin >> num_array2[r][c];
+		}
+	}
+}
+
+bool mirror(int num_array1[][size], int num_array2[][size], int row, int col)
+{
+	for (int r = 0; r < row; r++)
+	{
+		int cc = col - 1;
+		for (int c = 0; c < col; c++)
+		{
+			if (num_array1[r][c] != num_array2[r][cc])
+			{
+				return false;
+				break;
+			}
+			cc--;
+		}
+	}
+	return true;
+}
+
+void main()
+{
+	int num_array1[size][size], num_array2[size][size], row, col;
+	char ans;
+	do
+	{
+		cout << "Enter the dimensions of the two matrices: ";
+		cin >> row >> col;
+		input(num_array1, num_array2, row, col);
+		if (mirror(num_array1, num_array2, row, col))
+		{
+			cout << "Yes, they are mirrors to each other.\n";
+		}
+		else
+		{
+			cout << "No, they are not mirrors to each other.\n";
+		}
+		cout << "Do you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

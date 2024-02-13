@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+void input(int num_Array1[][size], int num_Array2[][size], int row1, int col1, int row2, int col2)
+{
+	cout << "Enter the numbers of the first matrix: ";
+	for (int r = 0; r < row1; r++)
+	{
+		for (int c = 0; c < col1; c++)
+		{
+			cin >> num_Array1[r][c];
+		}
+	}
+	cout << "Enter the numbers of the second matrix: ";
+	for (int r = 0; r < row2; r++)
+	{
+		for (int c = 0; c < col2; c++)
+		{
+			cin >> num_Array2[r][c];
+		}
+	}
+}
+
+void multiplication(int num_Array1[size][size],int num_Array2[size][size],int row1,int col1,int row2,int col2)
+{
+	int sum = 0;
+	for (int r = 0; r < row1; r++)
+	{
+		for (int c = 0; c < col2; c++)
+		{
+			for (int k = 0; k < col1; k++)
+			{
+				sum += num_Array1[r][k] * num_Array2[k][c];
+			}
+			cout << sum << " ";
+			sum = 0;
+		}
+		cout << endl;
+	}
+
+}
+
+
+void main()
+{
+	int num_Array1[size][size], num_Array2[size][size], row1, col1, row2, col2;
+	char ans = 'y';
+	do
+	{
+		cout << "Enter the dimensions of the first matrix: ";
+		cin >> row1>> col1;
+		cout << "Enter the dimensions of the second matrix: ";
+		cin >> row2>> col2;
+		if (col1 != row2)
+		{
+			cout << "Wrong dimensions!\n";
+			continue;
+		}
+		else
+		{
+			input(num_Array1, num_Array2, row1, col1, row2, col2);
+			multiplication(num_Array1, num_Array2, row1, col1, row2, col2);
+		}
+		cout << "Do you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

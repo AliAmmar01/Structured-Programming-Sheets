@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+
+void main()
+{
+	char string[] = "A String.";
+	char* ptr = string;
+	cout << *ptr << " " << &ptr << " " << ptr[3] << endl;
+	ptr += 2;
+	cout << *ptr << " " << ptr[2] << " " << ptr[5];
+}

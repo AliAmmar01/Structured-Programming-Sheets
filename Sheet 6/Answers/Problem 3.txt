@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct students
+{
+	int ID;
+	string fname;
+	int grade;
+	char status;
+};
+
+void input(students std[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter Student " << i + 1 << " ID: ";
+		cin >> std[i].ID;
+		cout << "Enter Student " << i + 1 << " First name: ";
+		cin >> std[i].fname;
+		cout << "Enter Student " << i + 1 << " Grade: ";
+		cin >> std[i].grade;
+		cout << endl;
+	}
+}
+
+void Status(students std[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (std[i].grade >= 60)
+		{
+			std[i].status = 'P';
+		}
+		else
+		{
+			std[i].status = 'F';
+		}
+	}
+}
+
+void display(students std[], int size)
+{
+	cout << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << std[i].fname << " status is:" << std[i].status << endl;
+	}
+}
+
+void main()
+{
+	int size;
+	cout << "How many students are you going to register? ";
+	cin >> size;
+	students* std = new students[size];
+	input(std, size);
+	Status(std, size);
+	display(std, size);
+}

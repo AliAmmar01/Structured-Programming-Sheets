@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int max(int n1, int n2)
+{
+	if (n1 > n2)
+	{
+		return n1;
+	}
+	else if (n1 < n2)
+	{
+		return n2;
+	}
+	else
+		return n1;
+
+}
+
+void LCM(int n1, int n2)
+{
+	int mx = max(n1, n2);
+	do
+	{
+		if (mx % n1 == 0 && mx % n2 == 0)
+		{
+			cout << "LCM = " << mx;
+			break;
+		}
+		else
+		{
+			mx++;
+		}
+	} while (true);
+}
+
+void main()
+{
+	int n1, n2;
+	cout << "Enter two integers: ";
+	cin >> n1 >> n2;
+	LCM(n1, n2);
+}

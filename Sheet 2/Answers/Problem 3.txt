@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+#define size 5
+char vowels[] = { 'A','E','U','I','O','a','e','u','i','o' };
+
+int count(char char_Array[])
+{
+	int count = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < sizeof(vowels); j++)
+		{
+			if (char_Array[i] == vowels[j])
+			{
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+void main()
+{
+	char char_Array[size] = {};
+	cout << "Enter your characters :";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> char_Array[i];
+	}
+	cout << "You entered " << count(char_Array) << " vowels.";
+}

@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+void input(int num_Array[size][size], int row, int col)
+{
+	cout << "Enter matrix elements:\n";
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			cin >> num_Array[r][c];
+		}
+	}
+}
+
+void transpose(int num_Array[][size], int row, int col)
+{
+	cout << "The transpose:\n";
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			cout << num_Array[c][r] << " ";
+		}
+		cout << endl;
+	}
+}
+
+void main()
+{
+	int num_Array[size][size] = { {0} }, row, col;
+	char ans;
+	do
+	{
+		cout << "Enter the dimensions of the matrix: ";
+		cin >> row >> col;
+		input(num_Array, row, col);
+		transpose(num_Array, row, col);
+		cout << "Do you want to continue?(Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

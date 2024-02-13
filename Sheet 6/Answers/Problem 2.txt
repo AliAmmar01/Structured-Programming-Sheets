@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+using namespace std;
+#define SqPrice 200
+#define MaxRooms 10
+
+struct room_dim
+{
+	double length, width;
+};
+
+struct houses
+{
+	string address;
+	int num_rooms;
+	room_dim dim[MaxRooms];
+	double area = 0;
+	double price = 0;
+};
+
+void input(houses house[],int numOhouses)
+{
+	for (int i = 0; i < numOhouses; i++)
+	{
+		cout << "Address: ";
+		cin >> house[i].address;
+		cout << "Number of rooms:(1-10) ";
+		cin >> house[i].num_rooms;
+		for (int j = 0; j < house[i].num_rooms; j++)
+		{
+			cout << "Dimensions of room " << j + 1 << ": ";
+			cin >> house[i].dim[j].length >> house[i].dim[j].width;
+		}
+	}
+}
+
+void calculation(houses house[], int numOhouses)
+{
+	for (int i = 0; i < numOhouses; i++)
+	{
+		for (int j = 0; j < house[i].num_rooms; j++)
+		{
+			house[i].area += house[i].dim[j].length * house[i].dim[j].width;
+		}
+		house[i].price = house[i].area * SqPrice;
+	}
+}
+
+void display(houses house[])
+{
+	int n;
+	cout << "Which house would you like to get info on?  ";
+	cin >> n;
+	cout << "This house is located in " << house[n - 1].address << ". It has " << house[n - 1].num_rooms << "rooms, with a total area of " << house[n - 1].area << "square meters.\nIt costs " << house[n - 1].price << "dollars.\n";
+}
+
+
+
+void main()
+{
+	int numOhouses, n;
+	char ans;
+	cout << "How many houses do you want to register? ";
+	cin >> numOhouses;
+	houses* house = new houses[numOhouses];
+	input(house, numOhouses);
+	calculation(house, numOhouses);
+	do
+	{
+		display(house);
+		cout << "Do you want to continue? (Y/N) ";
+		cin >> ans;
+	} while (ans == 'y' || ans == 'Y');
+}

@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void grid(int num)
+{
+	for (int i = 1; i <= num * num; i++)
+	{
+		cout << i << "\t";
+		if (i % num == 0)
+		{
+			cout << endl;
+		}
+	}
+}
+
+void main()
+{
+	int num;
+	cout << "Enter number: ";
+	cin >> num;
+	grid(num);
+}
